@@ -1,7 +1,10 @@
 const { ctrlWrapper } = require("../helpers");
+const { sendDataToEmail } = require("../helpers/elasticEmailSend");
 
-const sendEmail = async (req, res, next) => {
-  res.json({ ...req.body });
+const sendEmail = (req, res, next) => {
+  // console.log({ ...req.body });
+  sendDataToEmail({ ...req.body });
+  res.json({ message: "List was successfully sent" });
 };
 
 module.exports = {
