@@ -2,14 +2,14 @@ const express = require("express");
 
 const cors = require("cors");
 
+const sendEmail = require("./routes/api/sendEmail");
+
 const app = express();
 
 app.use(cors());
 app.use(express.json());
 
-app.post("/", async (req, res, next) => {
-  res.json({ ...req.body });
-});
+app.use("/api/sendemail", sendEmail);
 
 app.use((req, res) => {
   res.status(404).json({ message: "Not found" });
