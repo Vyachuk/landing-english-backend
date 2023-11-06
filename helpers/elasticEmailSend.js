@@ -2,7 +2,7 @@ const ElasticEmail = require("@elasticemail/elasticemail-client");
 
 require("dotenv").config();
 
-const { ELASTIC_API_KEY } = process.env;
+const { ELASTIC_API_KEY, INBOX, FROM_MAIL } = process.env;
 
 const defaultClient = ElasticEmail.ApiClient.instance;
 
@@ -13,7 +13,7 @@ const api = new ElasticEmail.EmailsApi();
 
 const sendDataToEmail = ({ name, email, phone, message }) => {
   const emailToSend = ElasticEmail.EmailMessageData.constructFromObject({
-    Recipients: [new ElasticEmail.EmailRecipient("sevapa7888@mainmile.com")],
+    Recipients: [new ElasticEmail.EmailRecipient(INBOX)],
     Content: {
       Body: [
         ElasticEmail.BodyPart.constructFromObject({
@@ -26,7 +26,7 @@ const sendDataToEmail = ({ name, email, phone, message }) => {
         }),
       ],
       Subject: `New study request from ${name ? name : email}`,
-      From: "landing-english@mail.com",
+      From: FROM_MAIL,
     },
   });
 
