@@ -25,7 +25,7 @@ const sendDataToEmail = ({ name, email, phone, message }) => {
           } <br /> Email: ${email} <br /> Message: ${message ? message : ""}`,
         }),
       ],
-      Subject: `New study request from ${name}`,
+      Subject: `New study request from ${name ? name : email}`,
       From: "landing-english@mail.com",
     },
   });
