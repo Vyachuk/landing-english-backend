@@ -4,7 +4,7 @@ const { emailRegexp } = require("../constants/sendEmail");
 
 const validateSchema = Joi.object({
   name: Joi.string(),
-  phone: Joi.number(),
+  phone: Joi.string(),
   email: Joi.string().pattern(emailRegexp).required(),
   message: Joi.string(),
 });
